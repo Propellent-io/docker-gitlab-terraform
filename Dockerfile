@@ -6,7 +6,8 @@ WORKDIR /opt/bin
 
 RUN apt-get update
 
-RUN apt-get install -y wget zip
+# jq is needed by gitlab
+RUN apt-get install -y wget zip jq
 
 # TODO - GPG check of binary
 RUN wget -q https://releases.hashicorp.com/terraform/1.1.7/terraform_1.1.7_linux_amd64.zip \
