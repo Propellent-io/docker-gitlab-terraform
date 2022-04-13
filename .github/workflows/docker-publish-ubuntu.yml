@@ -34,10 +34,9 @@ jobs:
       id-token: write
 
     steps:
-      - id: read-docker-image-identifiers
-        name: Read Docker Image Identifiers
-        run: echo ::set-env name=IMAGE_REPOSITORY::$(echo ${{ env.IMAGE_NAME }} | tr '[:upper:]' '[:lower:]')
-
+      - name: PrepareReg Names
+        run: |
+          echo IMAGE_REPOSITORY=$(echo ${{ env.IMAGE_NAME }} | tr '[:upper:]' '[:lower:]') >> $GITHUB_ENV
       - name: Checkout repository
         uses: actions/checkout@v2
 
